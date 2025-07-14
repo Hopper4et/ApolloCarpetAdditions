@@ -1,4 +1,4 @@
-<img src="./src/main/resources/assets/apollocarpetadditions/icon.png" align="right" width="128px"/>
+<img src="./src/main/resources/assets/apollocarpetadditions/icon.png" width="128px"/>
 
 # ApolloCarpetAdditions
 
