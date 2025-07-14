@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "Hopper4et.apollocarpetadditions.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CarpetPlayerCommandMixin",
+    "EndGatewayBlockEntityAccessor",
+    "EndGatewayBlockEntityInvoker",
+    "EndGatewayBlockMixin",
+    "EntitySpawnS2CPacketMixin",
+    "NetherPortalBlockInvoker",
+    "ServerPlayerEntityMixin",
+    "ServerWorldMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+  ]
+}

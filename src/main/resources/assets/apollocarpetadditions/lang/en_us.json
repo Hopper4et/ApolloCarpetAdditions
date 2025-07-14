@@ -1,0 +1,7 @@
+{
+  "carpet.rule.spectatorCanUsePortals.desc": "Allows spectators to teleport through Nether portals, End portals and End gateways without affecting the world.",
+  "carpet.rule.endGatewaysLoadChunks.desc": "End gateways load chunks when an entity teleports through them.",
+  "carpet.rule.pigCannonUnstuck.desc": "Fixed chunk loading behavior when player is a passenger of a very fast entity.",
+  "carpet.rule.playerCommandNonOperatorSpawnInGamemode.desc": "Specifies in which gamemodes non-operators can spawn players with /player command.",
+  "carpet.rule.lazyLinkingPre1_21Render.desc": "Returns the behavior of server sending packets with entity coordinates (MC-170907). This fixes lazy linking mob render."
+}

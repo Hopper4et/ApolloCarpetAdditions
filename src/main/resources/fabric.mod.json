@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "apollocarpetadditions",
+  "version": "${version}+mc${minecraft_version}",
+  "name": "ApolloCarpetAdditions",
+  "description": "Additions for Carpet mod from Apollotech SMP minecraft server!",
+  "authors": [
+    "Hopper4et"
+  ],
+  "contact": {
+    "ApolloTech SMP Server": "https://discord.gg/xtUtuQjrkz",
+    "Author discord id": "Hopper4et"
+  },
+  "license": "MIT",
+  "icon": "assets/apollocarpetadditions/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "Hopper4et.apollocarpetadditions.ApolloCarpetAdditionsServer"
+    ]
+  },
+  "mixins": [
+    "apollocarpetadditions.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}",
+    "carpet": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/xtUtuQjrkz"
+      }
+    }
+  }
+}
