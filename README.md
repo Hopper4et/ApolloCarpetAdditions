@@ -2,10 +2,10 @@
 
 # ApolloCarpetAdditions
 
-ApolloCarpetAdditions is an extension to [Carpet mod] from the [Apollotech SMP minecraft server]
+ApolloCarpetAdditions is an extension to [Carpet mod] from the [Apollotech SMP RU minecraft server]
 
 [Carpet mod]: https://github.com/gnembon/fabric-carpet
-[Apollotech SMP minecraft server]: https://discord.gg/xtUtuQjrkz
+[Apollotech SMP RU minecraft server]: https://discord.gg/xtUtuQjrkz
 
 # Carpet Mod Settings
 ## endGatewaysLoadChunks
