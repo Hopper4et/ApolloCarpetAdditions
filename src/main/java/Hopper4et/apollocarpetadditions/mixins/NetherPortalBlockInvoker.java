@@ -1,7 +1,6 @@
 package Hopper4et.apollocarpetadditions.mixins;
 
 import net.minecraft.block.NetherPortalBlock;
-import net.minecraft.block.entity.EndGatewayBlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;

@@ -48,7 +48,7 @@ public abstract class SpectatorCanUsePortals implements EndGatewayBlockEntityAcc
             player.resetPortalCooldown();
             TeleportTarget target = getTeleportTarget(player, block, world, playerBlockPos);
             if (target != null) {
-                teleportPlayer(player, world, target);
+                player.teleportTo(target);
             }
         }
     }
@@ -96,7 +96,6 @@ public abstract class SpectatorCanUsePortals implements EndGatewayBlockEntityAcc
             BlockPos scaledBlockPos = worldBorder.clampFloored(player.getX() * scaleFactor, player.getY(), player.getZ() * scaleFactor);
             Optional<BlockPos> destinationPortals = destinationWorld.getPortalForcer().getPortalPos(scaledBlockPos, destinationIsNether, worldBorder);
             BlockLocating.Rectangle rectangle;
-            TeleportTarget.PostDimensionTransition postDimensionTransition;
             if (destinationPortals.isEmpty()) {
                 return null;
             }
@@ -124,6 +123,7 @@ public abstract class SpectatorCanUsePortals implements EndGatewayBlockEntityAcc
                             targetBlockPos :
                             EndGatewayBlockEntityInvoker.invokeFindBestPortalExitPos(originWorld, targetBlockPos);
 
+            assert destinationBlockPos != null;
             Vec3d destinationPos = destinationBlockPos.toBottomCenterPos();
             return new TeleportTarget(
                     originWorld, destinationPos,
@@ -135,19 +135,6 @@ public abstract class SpectatorCanUsePortals implements EndGatewayBlockEntityAcc
 
     }
 
-    private static void teleportPlayer(PlayerEntity player, World world, TeleportTarget target) {
-        /*if (target.originWorld().getRegistryKey().equals(originWorld.getRegistryKey())) {
-            ((ServerPlayerEntity) player).networkHandler.requestTeleport(
-                    target.position().getX(),
-                    target.position().getY(),
-                    target.position().getZ(),
-                    target.yaw(),
-                    target.pitch()
-            );
-        } else {
-            player.teleportTo(target);
-        }*/
-        player.teleportTo(target);
-    }
+
 
 }

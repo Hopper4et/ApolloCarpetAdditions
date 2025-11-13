@@ -1,15 +1,20 @@
 package Hopper4et.apollocarpetadditions;
 
+import Hopper4et.apollocarpetadditions.commands.MacroRunner;
+import Hopper4et.apollocarpetadditions.commands.MacroCommand;
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
 
 
-import carpet.api.settings.SettingsManager;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import com.mojang.brigadier.CommandDispatcher;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.command.CommandRegistryAccess;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.command.ServerCommandSource;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -30,14 +35,22 @@ public class ApolloCarpetAdditionsServer implements CarpetExtension, ModInitiali
     }
 
     @Override
-    public void onGameStarted()
-    {
+    public void onGameStarted() {
         CarpetServer.settingsManager.parseSettingsClass(ApolloCarpetAdditionsSettings.class);
     }
 
     @Override
-    public Map<String, String> canHasTranslations(String lang)
-    {
+    public void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher, final CommandRegistryAccess commandBuildContext) {
+        MacroCommand.register(dispatcher);
+    }
+
+    @Override
+    public void onTick(MinecraftServer server) {
+        MacroRunner.tick(server);
+    }
+
+    @Override
+    public Map<String, String> canHasTranslations(String lang) {
         InputStream langFile = ApolloCarpetAdditionsServer.class.getClassLoader().getResourceAsStream("assets/apollocarpetadditions/lang/%s.json".formatted(lang));
         if (langFile == null) {
             // we don't have that language

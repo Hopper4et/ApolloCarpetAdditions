@@ -1,7 +1,13 @@
 {
-  "carpet.rule.spectatorCanUsePortals.desc": "Allows spectators to teleport through Nether portals, End portals and End gateways without affecting the world.",
   "carpet.rule.endGatewaysLoadChunks.desc": "End gateways load chunks when an entity teleports through them.",
-  "carpet.rule.pigCannonUnstuck.desc": "Fixed chunk loading behavior when player is a passenger of a very fast entity.",
-  "carpet.rule.playerCommandNonOperatorSpawnInGamemode.desc": "Specifies in which gamemodes non-operators can spawn players with /player command.",
-  "carpet.rule.lazyLinkingPre1_21Render.desc": "Returns the behavior of server sending packets with entity coordinates (MC-170907). This fixes lazy linking mob render."
+  "carpet.rule.spectatorCanUsePortals.desc": "Allows spectators to teleport through Nether portals, End portals and End gateways without affecting the world.",
+
+  "carpet.rule.pigCannonUnstuck.desc": "Fixes chunk loading behavior when player is a passenger of a very fast entity.",
+  "carpet.rule.lazyLinkingPre1_21Render.desc": "Returns the behavior of server sending packets with entity coordinates (MC-170907). This fixes lazy linking mob render.",
+  "carpet.rule.portalNoClipFix.desc": "Fixes a bug that teleports player through a portal after touching it in a no-clip (MC-279021).",
+
+  "carpet.rule.commandMacro.desc": "Allows to create and execute a sequence of commands with a delay.",
+  "carpet.rule.allowEditOtherPlayersMacros.desc": "Determines what permission level allows editing other players' macros via /macro command.",
+
+  "carpet.rule.playerCommandNonOperatorSpawnInGamemode.desc": "Specifies in which gamemodes non-operators can spawn players with /player command."
 }
