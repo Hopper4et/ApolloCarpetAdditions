@@ -32,17 +32,17 @@ public class ApolloCarpetAdditionsSettings {
     @Rule(categories = { MOD, BUGFIX, SPECTATOR })
     public static boolean portalNoClipFix = false;
 
-    //commands
+    //command rules
 
-    @Rule(categories = { MOD, COMMAND })
-    public static String commandMacro = "ops";
+    @Rule(categories = { MOD, COMMAND, SURVIVAL })
+    public static GamemodeOptions playerCommandNonOperatorSpawnInGamemode = GamemodeOptions.NONE;
 
     @Rule(categories = { MOD, COMMAND })
     public static String allowEditOtherPlayersMacros = "ops";
 
-    //other
+    //commands
 
-    @Rule(categories = { MOD, COMMAND, SURVIVAL })
-    public static GamemodeOptions playerCommandNonOperatorSpawnInGamemode = GamemodeOptions.NONE;
+    @Rule(categories = { MOD, COMMAND })
+    public static String commandMacro = "ops";
 
 }
