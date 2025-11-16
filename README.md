@@ -46,6 +46,20 @@ Fixes a bug that teleports player through a portal after touching it in a no-cli
 * Allowed options: `true`, `false`
 * Categories: `APOLLO`, `BUGFIX`, `SPECTATOR`
 
+## enderPearlNotLoadChunksFix
+Makes sure that the destination chunk and all chunks requiring block checking are loaded before ender pearl with high speed moves. Uses some code from carpet extra extras enderPearlChunkLoadingFix, so there is no need to turn both of them on.
+* Type: `Boolean`
+* Default value: `false`
+* Allowed options: `true`, `false`
+* Categories: `APOLLO`, `BUGFIX`, `SURVIVAL`
+
+
+## instamineDeepslateWithNetheritePickaxe
+A player with a block breaking speed of 49 or higher (at least netherite pickaxe with efficiency 5 and haste 2 effect) can instamine deepslate. 
+* Type: `Boolean`
+* Default value: `false`
+* Allowed options: `true`, `false`
+* Categories: `APOLLO`, `SURVIVAL`
 
 
 ## playerCommandNonOperatorSpawnInGamemode

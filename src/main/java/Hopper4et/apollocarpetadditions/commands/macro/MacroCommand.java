@@ -1,6 +1,7 @@
-package Hopper4et.apollocarpetadditions.commands;
+package Hopper4et.apollocarpetadditions.commands.macro;
 
 import Hopper4et.apollocarpetadditions.ApolloCarpetAdditionsSettings;
+import Hopper4et.apollocarpetadditions.commands.MacroRunner;
 import Hopper4et.apollocarpetadditions.models.DelayCommand;
 import Hopper4et.apollocarpetadditions.models.Macro;
 import carpet.utils.CommandHelper;

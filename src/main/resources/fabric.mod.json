@@ -3,7 +3,7 @@
   "id": "apollocarpetadditions",
   "version": "${version}+mc${minecraft_version}",
   "name": "ApolloCarpetAdditions",
-  "description": "Additions for Carpet mod from Apollotech SMP minecraft server!",
+  "description": "An extension to Carpet mod by Apollotech SMP RU minecraft server",
   "authors": [
     "Hopper4et"
   ],

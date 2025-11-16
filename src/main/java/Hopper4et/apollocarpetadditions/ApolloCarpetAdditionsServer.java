@@ -1,15 +1,14 @@
 package Hopper4et.apollocarpetadditions;
 
 import Hopper4et.apollocarpetadditions.commands.MacroRunner;
-import Hopper4et.apollocarpetadditions.commands.MacroCommand;
+import Hopper4et.apollocarpetadditions.commands.macro.MacroCommand;
+import Hopper4et.apollocarpetadditions.rules.enderPearlNotLoadChunksFix.EnderPearlNotLoadChunksFix;
+import Hopper4et.apollocarpetadditions.utils.TickTaskManager;
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
-
-
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import com.mojang.brigadier.CommandDispatcher;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.command.CommandRegistryAccess;
@@ -46,7 +45,9 @@ public class ApolloCarpetAdditionsServer implements CarpetExtension, ModInitiali
 
     @Override
     public void onTick(MinecraftServer server) {
+        TickTaskManager.tick();
         MacroRunner.tick(server);
+        EnderPearlNotLoadChunksFix.tick();
     }
 
     @Override

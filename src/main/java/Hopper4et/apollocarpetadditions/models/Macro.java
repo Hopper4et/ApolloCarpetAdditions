@@ -15,7 +15,7 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Stream;
 
-import static Hopper4et.apollocarpetadditions.commands.MacroCommand.MACROS_DIR;
+import static Hopper4et.apollocarpetadditions.commands.macro.MacroCommand.MACROS_DIR;
 import static com.mojang.text2speech.Narrator.LOGGER;
 
 public record Macro(String name, UUID ownerUUID, String ownerNickName, List<DelayCommand> commands) {

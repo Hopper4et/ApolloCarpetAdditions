@@ -1,6 +1,11 @@
 package Hopper4et.apollocarpetadditions;
 
+import Hopper4et.apollocarpetadditions.rules.enderPearlNotLoadChunksFix.EnderPearlNotLoadChunksFix;
+import carpet.api.settings.CarpetRule;
 import carpet.api.settings.Rule;
+import carpet.api.settings.Validator;
+import net.minecraft.server.command.ServerCommandSource;
+import org.jetbrains.annotations.Nullable;
 
 import static carpet.api.settings.RuleCategory.*;
 
@@ -32,6 +37,14 @@ public class ApolloCarpetAdditionsSettings {
     @Rule(categories = { MOD, BUGFIX, SPECTATOR })
     public static boolean portalNoClipFix = false;
 
+    @Rule(categories = { MOD, BUGFIX, SURVIVAL }, validators = EnderPearlChunkLoadingFixValidator.class)
+    public static boolean enderPearlNotLoadChunksFix = false;
+
+    //other rules
+
+    @Rule(categories = { MOD, SURVIVAL })
+    public static boolean instamineDeepslateWithNetheritePickaxe = false;
+
     //command rules
 
     @Rule(categories = { MOD, COMMAND, SURVIVAL })
@@ -45,4 +58,11 @@ public class ApolloCarpetAdditionsSettings {
     @Rule(categories = { MOD, COMMAND })
     public static String commandMacro = "ops";
 
+    private static class EnderPearlChunkLoadingFixValidator extends Validator<Boolean> {
+        @Override
+        public Boolean validate(@Nullable ServerCommandSource source, CarpetRule<Boolean> changingRule, Boolean newValue, String userInput) {
+            if (!newValue) EnderPearlNotLoadChunksFix.removeAllFastEnderPearls();
+            return newValue;
+        }
+    }
 }
