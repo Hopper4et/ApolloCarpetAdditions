@@ -11,6 +11,7 @@
     "EndGatewayBlockMixin",
     "EntityMixin",
     "EntitySpawnS2CPacketMixin",
+    "ItemMixin",
     "NetherPortalBlockInvoker",
     "PlayerEntityMixin",
     "ServerPlayerEntityMixin",

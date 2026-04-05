@@ -23,8 +23,6 @@ Allows spectators to teleport through Nether portals, End portals and End gatewa
 * Allowed options: `true`, `false`
 * Categories: `APOLLO`, `CREATIVE`
 
-
-
 ## pigCannonUnstuck
 Fixed chunk loading behavior when player is a passenger of a very fast entity.
 * Type: `Boolean`
@@ -54,12 +52,21 @@ Makes sure that the destination chunk and all chunks requiring block checking ar
 * Categories: `APOLLO`, `BUGFIX`, `SURVIVAL`
 
 
+
 ## instamineDeepslateWithNetheritePickaxe
 A player with a block breaking speed of 49 or higher (at least netherite pickaxe with efficiency 5 and haste 2 effect) can instamine deepslate. 
 * Type: `Boolean`
 * Default value: `false`
 * Allowed options: `true`, `false`
 * Categories: `APOLLO`, `SURVIVAL`
+
+## playerBucketInteractionRange
+Overwrites the maximum distance at which a player can use buckets, boats, and some other items. Set to -1 to disable.
+* Type: `Float`
+* Default value: `-1.0`
+* Suggested options: `-1.0`
+* Categories: `APOLLO`, `SURVIVAL`
+
 
 
 ## playerCommandNonOperatorSpawnInGamemode

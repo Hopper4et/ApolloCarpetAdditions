@@ -45,6 +45,9 @@ public class ApolloCarpetAdditionsSettings {
     @Rule(categories = { MOD, SURVIVAL })
     public static boolean instamineDeepslateWithNetheritePickaxe = false;
 
+    @Rule(categories = { MOD, SURVIVAL })
+    public static float playerBucketInteractionRange = -1;
+
     //command rules
 
     @Rule(categories = { MOD, COMMAND, SURVIVAL })
