@@ -12,6 +12,7 @@
     "EntityMixin",
     "EntitySpawnS2CPacketMixin",
     "ItemMixin",
+    "NeighborUpdaterMixin",
     "NetherPortalBlockInvoker",
     "PlayerEntityMixin",
     "ServerPlayerEntityMixin",

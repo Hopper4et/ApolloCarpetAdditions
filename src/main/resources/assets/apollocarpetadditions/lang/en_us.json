@@ -6,7 +6,7 @@
   "carpet.rule.lazyLinkingPre1_21Render.desc": "Returns the behavior of server sending packets with entity coordinates (MC-170907). This fixes lazy linking mob render.",
   "carpet.rule.portalNoClipFix.desc": "Fixes a bug that teleports player through a portal after touching it in a no-clip (MC-279021).",
   "carpet.rule.enderPearlNotLoadChunksFix.desc": "Makes sure that the destination chunk and all chunks requiring block checking are loaded before ender pearl with high speed moves. Also not allowing chunk with ender pearl to unload. Uses some code from carpet extra extras enderPearlChunkLoadingFix, so there is no need to turn both of them on.",
-
+  "carpet.rule.blockUpdateSuppressionLagFix.desc": "Removes lag from creating crash reports from block update suppression.",
   "carpet.rule.instamineDeepslateWithNetheritePickaxe.desc": "A player with a block breaking speed of 49 or higher (at least netherite pickaxe with efficiency 5 and haste 2 effect) can instamine deepslate.",
   "carpet.rule.playerBucketInteractionRange.desc": "Overwrites the maximum distance at which a player can use buckets, boats, and some other items. Set to -1 to disable.",
 

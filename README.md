@@ -51,6 +51,13 @@ Makes sure that the destination chunk and all chunks requiring block checking ar
 * Allowed options: `true`, `false`
 * Categories: `APOLLO`, `BUGFIX`, `SURVIVAL`
 
+## blockUpdateSuppressionLagFix
+Removes lag from creating crash reports from block update suppression.
+* Type: `Boolean`
+* Default value: `false`
+* Allowed options: `true`, `false`
+* Categories: `APOLLO`, `OPTIMIZATION`
+
 
 
 ## instamineDeepslateWithNetheritePickaxe

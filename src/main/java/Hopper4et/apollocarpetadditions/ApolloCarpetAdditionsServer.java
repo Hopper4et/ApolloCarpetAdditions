@@ -14,6 +14,7 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.util.crash.CrashReport;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -28,6 +29,9 @@ public class ApolloCarpetAdditionsServer implements CarpetExtension, ModInitiali
     public void onInitialize() {
 
     }
+    public static final CrashReport STATIC_BLOCK_UPDATE_SUPPRESSION_CRASH_REPORT = CrashReport.create(
+            new RuntimeException("Neighbor update failed"), "Exception while updating neighbours"
+    );
 
     static {
         CarpetServer.manageExtension(new ApolloCarpetAdditionsServer());
@@ -54,7 +58,6 @@ public class ApolloCarpetAdditionsServer implements CarpetExtension, ModInitiali
     public Map<String, String> canHasTranslations(String lang) {
         InputStream langFile = ApolloCarpetAdditionsServer.class.getClassLoader().getResourceAsStream("assets/apollocarpetadditions/lang/%s.json".formatted(lang));
         if (langFile == null) {
-            // we don't have that language
             return Collections.emptyMap();
         }
         String jsonData;

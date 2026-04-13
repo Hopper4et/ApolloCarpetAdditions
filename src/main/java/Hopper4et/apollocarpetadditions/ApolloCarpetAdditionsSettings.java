@@ -40,6 +40,9 @@ public class ApolloCarpetAdditionsSettings {
     @Rule(categories = { MOD, BUGFIX, SURVIVAL }, validators = EnderPearlChunkLoadingFixValidator.class)
     public static boolean enderPearlNotLoadChunksFix = false;
 
+    @Rule(categories = { MOD, OPTIMIZATION })
+    public static boolean blockUpdateSuppressionLagFix = false;
+
     //other rules
 
     @Rule(categories = { MOD, SURVIVAL })
