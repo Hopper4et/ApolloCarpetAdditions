@@ -1,8 +1,7 @@
 plugins {
-    id 'fabric-loom' version '1.11-SNAPSHOT'
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
     id 'maven-publish'
 }
-
 version = project.mod_version
 group = project.maven_group
 
@@ -15,6 +14,7 @@ repositories {
     maven {
         url 'https://masa.dy.fi/maven'
     }
+    maven { url 'https://jitpack.io' }
 }
 
 loom {
@@ -32,10 +32,11 @@ loom {
 dependencies {
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
-    modImplementation "carpet:fabric-carpet:${project.minecraft_version}-${project.carpet_core_version}"
+    //implementation "carpet:fabric-carpet:${project.minecraft_version}-${project.carpet_core_version}"
+    implementation 'com.github.gnembon:fabric-carpet:v26.3'
 }
 
 processResources {
@@ -51,7 +52,7 @@ processResources {
     }
 }
 
-def targetJavaVersion = 21
+def targetJavaVersion = 25
 tasks.withType(JavaCompile).configureEach {
     // ensure that the encoding is set to UTF-8, no matter what the system default is
     // this fixes some edge cases with special characters not displaying correctly

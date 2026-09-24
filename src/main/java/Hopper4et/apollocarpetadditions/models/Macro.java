@@ -4,7 +4,7 @@ import Hopper4et.apollocarpetadditions.ApolloCarpetAdditionsSettings;
 import carpet.utils.CommandHelper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.commands.CommandSourceStack;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
@@ -32,13 +32,13 @@ public record Macro(String name, UUID ownerUUID, String ownerNickName, List<Dela
         this(name, null, null, commands);
     }
 
-    public boolean isOwner(ServerCommandSource source) {
-        return source.isExecutedByPlayer() && Objects.requireNonNull(source.getPlayer()).getUuid().equals(ownerUUID);
+    public boolean isOwner(CommandSourceStack source) {
+        return source.isPlayer() && Objects.requireNonNull(source.getPlayer()).getUUID().equals(ownerUUID);
     }
 
-    public boolean canEdit(ServerCommandSource source) {
+    public boolean canEdit(CommandSourceStack source) {
         return CommandHelper.canUseCommand(source, ApolloCarpetAdditionsSettings.allowEditOtherPlayersMacros)
-                || (source.isExecutedByPlayer() && Objects.requireNonNull(source.getPlayer()).getUuid().equals(ownerUUID));
+                || (source.isPlayer() && Objects.requireNonNull(source.getPlayer()).getUUID().equals(ownerUUID));
     }
 
     public void save() {
@@ -78,14 +78,14 @@ public record Macro(String name, UUID ownerUUID, String ownerNickName, List<Dela
         return macroNames;
     }
 
-    public static List<String> listOwnerMacros(ServerCommandSource source) {
+    public static List<String> listOwnerMacros(CommandSourceStack source) {
         return listMacros().stream().filter(name -> {
             Macro macro = getFromFile(name);
             return macro != null && macro.isOwner(source);
         }).toList();
     }
 
-    public static List<String> listCanEditMacros(ServerCommandSource source) {
+    public static List<String> listCanEditMacros(CommandSourceStack source) {
         return listMacros().stream().filter(name -> {
             Macro macro = getFromFile(name);
             return macro != null && macro.canEdit(source);

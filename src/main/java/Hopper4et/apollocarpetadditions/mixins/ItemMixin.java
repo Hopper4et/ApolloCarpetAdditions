@@ -1,8 +1,8 @@
 package Hopper4et.apollocarpetadditions.mixins;
 
 import Hopper4et.apollocarpetadditions.ApolloCarpetAdditionsSettings;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -10,12 +10,12 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(Item.class)
 public class ItemMixin {
     @Redirect(
-            method = "raycast",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;getBlockInteractionRange()D")
+            method = "getPlayerPOVHitResult",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;blockInteractionRange()D")
     )
-    private static double changeInteractionRange(PlayerEntity player) {
+    private static double changeInteractionRange(Player player) {
         if(ApolloCarpetAdditionsSettings.playerBucketInteractionRange == -1){
-            return player.getBlockInteractionRange();
+            return player.blockInteractionRange();
         } else {
             return ApolloCarpetAdditionsSettings.playerBucketInteractionRange;
         }

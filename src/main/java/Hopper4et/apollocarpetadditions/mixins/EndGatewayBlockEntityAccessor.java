@@ -1,15 +1,14 @@
 package Hopper4et.apollocarpetadditions.mixins;
 
-import net.minecraft.block.entity.EndGatewayBlockEntity;
-
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.TheEndGatewayBlockEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
-@Mixin(EndGatewayBlockEntity.class)
+@Mixin(TheEndGatewayBlockEntity.class)
 public interface EndGatewayBlockEntityAccessor {
     @Accessor
-    BlockPos getExitPortalPos();
+    BlockPos getExitPortal();
 
     @Accessor
     boolean getExactTeleport();
