@@ -5,32 +5,37 @@ import carpet.commands.PlayerCommand;
 import carpet.utils.Messenger;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.command.argument.GameModeArgumentType;
-import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.world.GameMode;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.commands.arguments.GameModeArgument;
+import net.minecraft.server.permissions.PermissionCheck;
+import net.minecraft.server.permissions.Permissions;
+import net.minecraft.world.level.GameType;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@Debug(export = true)
 @Mixin(PlayerCommand.class)
 public abstract class CarpetPlayerCommandMixin {
 
     @Inject(method = "cantSpawn", at = @At("RETURN"), remap = false, cancellable = true)
-    private static void cantSpawn(CommandContext<ServerCommandSource> context, CallbackInfoReturnable<Boolean> cir) {
+    private static void cantSpawn(CommandContext<CommandSourceStack> context, CallbackInfoReturnable<Boolean> cir) {
         if (
                 cir.getReturnValue() ||
                 ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode == ApolloCarpetAdditionsSettings.GamemodeOptions.NONE ||
-                context.getSource().hasPermissionLevel(2)
+                context.getSource().permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER)
         ) {
             return;
         }
 
-        GameMode gameMode;
+        GameType gameMode;
 
         try {
-            gameMode = GameModeArgumentType.getGameMode(context, "gamemode") ;
+            gameMode = GameModeArgument.getGameMode(context, "gamemode") ;
         } catch (IllegalArgumentException | CommandSyntaxException ignored) {
             return;
         }
@@ -49,18 +54,12 @@ public abstract class CarpetPlayerCommandMixin {
         }
     }
 
-    @ModifyArg(method = "lambda$register$30", index = 0, at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/server/command/ServerCommandSource;hasPermissionLevel(I)Z"))
-    private static int hasPermissionLevel1(int level){
+    @ModifyArg(method = "register", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/commands/Commands;hasPermission(Lnet/minecraft/server/permissions/PermissionCheck;)Lnet/minecraft/server/permissions/PermissionProviderCheck;"))
+    private static PermissionCheck modifyPermissionLevel(PermissionCheck permission) {
         return ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode ==
-                ApolloCarpetAdditionsSettings.GamemodeOptions.NONE ? 2 : 0;
+                ApolloCarpetAdditionsSettings.GamemodeOptions.NONE ? Commands.LEVEL_GAMEMASTERS : Commands.LEVEL_ALL;
     }
 
-    @ModifyArg(method = "lambda$register$29", index = 0, at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/server/command/ServerCommandSource;hasPermissionLevel(I)Z"))
-    private static int hasPermissionLevel2(int level){
-        return ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode ==
-                ApolloCarpetAdditionsSettings.GamemodeOptions.NONE ? 2 : 0;
-    }
 
 }

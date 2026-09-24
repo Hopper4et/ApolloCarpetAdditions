@@ -2,27 +2,27 @@ package Hopper4et.apollocarpetadditions.mixins;
 
 import Hopper4et.apollocarpetadditions.ApolloCarpetAdditionsSettings;
 import Hopper4et.apollocarpetadditions.rules.enderPearlNotLoadChunksFix.EnderPearlNotLoadChunksFix;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.projectile.thrown.EnderPearlEntity;
-import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
+import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl;
+import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(EnderPearlEntity.class)
-public abstract class EnderPearlEntityMixin extends ThrownItemEntity {
+@Mixin(ThrownEnderpearl.class)
+public abstract class EnderPearlEntityMixin extends ThrowableItemProjectile {
 
-    public EnderPearlEntityMixin(EntityType<? extends ThrownItemEntity> entityType, World world) {
-        super(entityType, world);
+    public EnderPearlEntityMixin(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
+        super(entityType, level);
     }
 
-    @Inject(method = "onRemove", at = @At(value = "HEAD"))
+    @Inject(method = "onRemoval", at = @At(value = "HEAD"))
     private void onRemove(Entity.RemovalReason reason, CallbackInfo ci) {
         if (ApolloCarpetAdditionsSettings.enderPearlNotLoadChunksFix) {
-            EnderPearlNotLoadChunksFix.removeEnderPearl((EnderPearlEntity) (Object) this);
+            EnderPearlNotLoadChunksFix.removeEnderPearl((ThrownEnderpearl) (Object) this);
         }
     }
 }

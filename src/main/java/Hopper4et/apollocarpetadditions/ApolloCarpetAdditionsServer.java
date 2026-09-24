@@ -11,10 +11,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mojang.brigadier.CommandDispatcher;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.command.CommandRegistryAccess;
+import net.minecraft.CrashReport;
+import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.util.crash.CrashReport;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class ApolloCarpetAdditionsServer implements CarpetExtension, ModInitiali
     public void onInitialize() {
 
     }
-    public static final CrashReport STATIC_BLOCK_UPDATE_SUPPRESSION_CRASH_REPORT = CrashReport.create(
+    public static final CrashReport STATIC_BLOCK_UPDATE_SUPPRESSION_CRASH_REPORT = CrashReport.forThrowable(
             new RuntimeException("Neighbor update failed"), "Exception while updating neighbours"
     );
 
@@ -43,7 +43,7 @@ public class ApolloCarpetAdditionsServer implements CarpetExtension, ModInitiali
     }
 
     @Override
-    public void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher, final CommandRegistryAccess commandBuildContext) {
+    public void registerCommands(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext commandBuildContext) {
         MacroCommand.register(dispatcher);
     }
 

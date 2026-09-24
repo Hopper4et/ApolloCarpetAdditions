@@ -5,25 +5,11 @@ import Hopper4et.apollocarpetadditions.ApolloCarpetAdditionsSettings;
 import Hopper4et.apollocarpetadditions.mixins.EndGatewayBlockEntityAccessor;
 import Hopper4et.apollocarpetadditions.mixins.EndGatewayBlockEntityInvoker;
 import Hopper4et.apollocarpetadditions.mixins.NetherPortalBlockInvoker;
-import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.EndGatewayBlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.packet.s2c.play.PositionFlag;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.math.*;
-import net.minecraft.world.BlockLocating;
-import net.minecraft.world.TeleportTarget;
-import net.minecraft.world.World;
-import net.minecraft.world.border.WorldBorder;
-import net.minecraft.world.dimension.DimensionType;
 
 import java.util.Optional;
 
 public abstract class SpectatorCanUsePortals implements EndGatewayBlockEntityAccessor {
+/*
     public static void spectatorMove(PlayerEntity player) {
         if (
                 !player.isSpectator() ||
@@ -113,7 +99,7 @@ public abstract class SpectatorCanUsePortals implements EndGatewayBlockEntityAcc
             if (!(blockEntity instanceof EndGatewayBlockEntity endGatewayBlockEntity)) {
                 return null;
             }
-            BlockPos targetBlockPos = ((EndGatewayBlockEntityAccessor) endGatewayBlockEntity).getExitPortalPos();
+            BlockPos targetBlockPos = ((EndGatewayBlockEntityAccessor) endGatewayBlockEntity).getExitPortal();
             if (targetBlockPos == null) {
                 return null;
             }
@@ -136,5 +122,5 @@ public abstract class SpectatorCanUsePortals implements EndGatewayBlockEntityAcc
     }
 
 
-
+*/
 }

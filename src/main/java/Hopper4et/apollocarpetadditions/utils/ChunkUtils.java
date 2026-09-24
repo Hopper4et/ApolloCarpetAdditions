@@ -1,21 +1,18 @@
 package Hopper4et.apollocarpetadditions.utils;
 
-import net.minecraft.server.world.ChunkTicketType;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.ChunkPos;
-import net.minecraft.util.math.ChunkSectionPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.chunk.ChunkStatus;
-import net.minecraft.world.chunk.WorldChunk;
+import net.minecraft.core.SectionPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.level.chunk.status.ChunkStatus;
+import net.minecraft.world.phys.Vec3;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Predicate;
 
 public class ChunkUtils {
-    private static final int ENDER_PEARL_TICKS = 40;
+
+    //TODO TicketType изменился там чето теперь нельзя сделать его
+/*    private static final int ENDER_PEARL_TICKS = 40;
     private static final ChunkTicketType<ChunkPos> ENDER_PEARL_PATH_TICKET = ChunkTicketType.create("ender_pearl_path", Comparator.comparingLong(ChunkPos::toLong));
     private static final Map<ChunkPos, TickTaskManager.TickTask> enderPearlLoadedChunks = new HashMap<>();
 
@@ -32,36 +29,36 @@ public class ChunkUtils {
         world.getChunkManager().removeTicket(ENDER_PEARL_PATH_TICKET, chunkPos, 2, chunkPos);
         enderPearlLoadedChunks.remove(chunkPos);
     }
-
-    public static ChunkPos getChunkPos(Vec3d pos) {
-        return new ChunkPos(MathHelper.floor(pos.x) >> 4, MathHelper.floor(pos.z) >> 4);
+*/
+    public static ChunkPos getChunkPos(Vec3 pos) {
+        return new ChunkPos(MathUtil.floor(pos.x) >> 4, MathUtil.floor(pos.z) >> 4);
     }
 
-    public static boolean isChunkEntityLoaded(ServerWorld world, ChunkPos chunkPos) {
-        return world.getChunk(chunkPos.x, chunkPos.z, ChunkStatus.FULL, false) instanceof WorldChunk;
+    public static boolean isChunkEntityLoaded(ServerLevel level, ChunkPos chunkPos) {
+        return level.getChunk(chunkPos.x(), chunkPos.z(), ChunkStatus.FULL, false) instanceof LevelChunk;
     }
 
     //uses predicate chunkHitFactory for every chunk selection on raycast path and returns false if any predicate returns false
-    public static boolean raycastChunkSelection(Vec3d start, Vec3d end, Predicate<ChunkSectionPos> chunkHitFactory) {
-        double endX = MathHelper.lerp(-1.0E-7, end.x, start.x);
-        double endY = MathHelper.lerp(-1.0E-7, end.y, start.y);
-        double endZ = MathHelper.lerp(-1.0E-7, end.z, start.z);
-        double startX = MathHelper.lerp(-1.0E-7, start.x, end.x);
-        double startY = MathHelper.lerp(-1.0E-7, start.y, end.y);
-        double startZ = MathHelper.lerp(-1.0E-7, start.z, end.z);
-        int currentChunkSelectionX = ChunkSectionPos.getSectionCoordFloored(startX);
-        int currentChunkSelectionY = ChunkSectionPos.getSectionCoordFloored(startY);
-        int currentChunkSelectionZ = ChunkSectionPos.getSectionCoordFloored(startZ);
-        ChunkSectionPos currentChunkSection = ChunkSectionPos.from(currentChunkSelectionX, currentChunkSelectionY, currentChunkSelectionZ);
+    public static boolean raycastChunkSelection(Vec3 start, Vec3 end, Predicate<SectionPos> chunkHitFactory) {
+        double endX = MathUtil.lerp(-1.0E-7, end.x, start.x);
+        double endY = MathUtil.lerp(-1.0E-7, end.y, start.y);
+        double endZ = MathUtil.lerp(-1.0E-7, end.z, start.z);
+        double startX = MathUtil.lerp(-1.0E-7, start.x, end.x);
+        double startY = MathUtil.lerp(-1.0E-7, start.y, end.y);
+        double startZ = MathUtil.lerp(-1.0E-7, start.z, end.z);
+        int currentChunkSelectionX = MathUtil.getSectionCoordFloored(startX);
+        int currentChunkSelectionY = MathUtil.getSectionCoordFloored(startY);
+        int currentChunkSelectionZ = MathUtil.getSectionCoordFloored(startZ);
+        SectionPos currentChunkSection = SectionPos.of(currentChunkSelectionX, currentChunkSelectionY, currentChunkSelectionZ);
 
         if (!(boolean) chunkHitFactory.test(currentChunkSection)) return false;
 
         double distanceX = endX - startX;
         double distanceY = endY - startY;
         double distanceZ = endZ - startZ;
-        int signOfDistanceX = MathHelper.sign(distanceX);
-        int signOfDistanceY = MathHelper.sign(distanceY);
-        int signOfDistanceZ = MathHelper.sign(distanceZ);
+        int signOfDistanceX = MathUtil.sign(distanceX);
+        int signOfDistanceY = MathUtil.sign(distanceY);
+        int signOfDistanceZ = MathUtil.sign(distanceZ);
         double progressStepX = signOfDistanceX == 0 ? Double.MAX_VALUE : signOfDistanceX * 16 / distanceX;
         double progressStepY = signOfDistanceY == 0 ? Double.MAX_VALUE : signOfDistanceY * 16 / distanceY;
         double progressStepZ = signOfDistanceZ == 0 ? Double.MAX_VALUE : signOfDistanceZ * 16 / distanceZ;
@@ -86,7 +83,7 @@ public class ChunkUtils {
                 progressZ += progressStepZ;
             }
 
-            currentChunkSection = ChunkSectionPos.from(currentChunkSelectionX, currentChunkSelectionY, currentChunkSelectionZ);
+            currentChunkSection = SectionPos.of(currentChunkSelectionX, currentChunkSelectionY, currentChunkSelectionZ);
             if (!(boolean) chunkHitFactory.test(currentChunkSection)) return false;
         }
 
@@ -94,6 +91,6 @@ public class ChunkUtils {
     }
 
     private static double partOfChunk(double value) {
-        return (value - (MathHelper.lfloor(value) >> 4 << 4)) / 16;
+        return (value - (MathUtil.lfloor(value) >> 4 << 4)) / 16;
     }
 }

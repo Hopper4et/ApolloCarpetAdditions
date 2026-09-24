@@ -4,7 +4,7 @@ import Hopper4et.apollocarpetadditions.rules.enderPearlNotLoadChunksFix.EnderPea
 import carpet.api.settings.CarpetRule;
 import carpet.api.settings.Rule;
 import carpet.api.settings.Validator;
-import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.commands.CommandSourceStack;
 import org.jetbrains.annotations.Nullable;
 
 import static carpet.api.settings.RuleCategory.*;
@@ -66,7 +66,7 @@ public class ApolloCarpetAdditionsSettings {
 
     private static class EnderPearlChunkLoadingFixValidator extends Validator<Boolean> {
         @Override
-        public Boolean validate(@Nullable ServerCommandSource source, CarpetRule<Boolean> changingRule, Boolean newValue, String userInput) {
+        public Boolean validate(@Nullable CommandSourceStack source, CarpetRule<Boolean> changingRule, Boolean newValue, String userInput) {
             if (!newValue) EnderPearlNotLoadChunksFix.removeAllFastEnderPearls();
             return newValue;
         }
