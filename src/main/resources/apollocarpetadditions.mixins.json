@@ -15,6 +15,7 @@
     "NeighborUpdaterMixin",
     "NetherPortalBlockInvoker",
     "PlayerEntityMixin",
+    "ServerGamePacketListenerImplMixin",
     "ServerPlayerEntityMixin",
     "ServerWorldMixin",
     "ThrownEntityMixin"
