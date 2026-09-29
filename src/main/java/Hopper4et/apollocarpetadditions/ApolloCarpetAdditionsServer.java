@@ -1,6 +1,7 @@
 package Hopper4et.apollocarpetadditions;
 
 import Hopper4et.apollocarpetadditions.commands.MacroRunner;
+import Hopper4et.apollocarpetadditions.commands.ClientCommandsServer;
 import Hopper4et.apollocarpetadditions.commands.macro.MacroCommand;
 import Hopper4et.apollocarpetadditions.rules.enderPearlNotLoadChunksFix.EnderPearlNotLoadChunksFix;
 import Hopper4et.apollocarpetadditions.utils.TickTaskManager;
@@ -27,7 +28,7 @@ public class ApolloCarpetAdditionsServer implements CarpetExtension, ModInitiali
 
     @Override
     public void onInitialize() {
-
+        ClientCommandsServer.initialize();
     }
     public static final CrashReport STATIC_BLOCK_UPDATE_SUPPRESSION_CRASH_REPORT = CrashReport.forThrowable(
             new RuntimeException("Neighbor update failed"), "Exception while updating neighbours"
