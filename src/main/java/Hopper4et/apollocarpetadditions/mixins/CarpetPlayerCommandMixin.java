@@ -9,6 +9,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.GameModeArgument;
 import net.minecraft.server.permissions.PermissionCheck;
+import net.minecraft.server.permissions.PermissionProviderCheck;
 import net.minecraft.server.permissions.Permissions;
 import net.minecraft.world.level.GameType;
 import org.spongepowered.asm.mixin.Debug;
@@ -16,9 +17,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Debug(export = true)
 @Mixin(PlayerCommand.class)
 public abstract class CarpetPlayerCommandMixin {
 
@@ -54,12 +55,9 @@ public abstract class CarpetPlayerCommandMixin {
         }
     }
 
-    @ModifyArg(method = "register", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/commands/Commands;hasPermission(Lnet/minecraft/server/permissions/PermissionCheck;)Lnet/minecraft/server/permissions/PermissionProviderCheck;"))
-    private static PermissionCheck modifyPermissionLevel(PermissionCheck permission) {
-        return ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode ==
-                ApolloCarpetAdditionsSettings.GamemodeOptions.NONE ? Commands.LEVEL_GAMEMASTERS : Commands.LEVEL_ALL;
+    @Redirect(method = "register", at = @At(value = "INVOKE", target = "Lnet/minecraft/commands/Commands;hasPermission(Lnet/minecraft/server/permissions/PermissionCheck;)Lnet/minecraft/server/permissions/PermissionProviderCheck;"))
+    private static PermissionProviderCheck<CommandSourceStack> a(PermissionCheck permission){
+        return Commands.hasPermission(Commands.LEVEL_ALL);
     }
-
 
 }

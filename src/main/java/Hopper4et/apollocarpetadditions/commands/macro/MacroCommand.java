@@ -16,6 +16,7 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.TimeArgument;
+import net.minecraft.network.chat.Component;
 import org.jspecify.annotations.Nullable;
 
 import java.io.IOException;
@@ -86,6 +87,11 @@ public class MacroCommand {
                                 .suggests(MacroCommand::suggestRunningMacros)
                                 .executes(MacroCommand::stop)));
         dispatcher.register(command);
+//        LiteralArgumentBuilder<CommandSourceStack> command1 = literal("test").executes(context -> {
+//            context.getSource().sendSystemMessage(Component.literal(ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode.toString()));
+//            return 1;
+//        });
+//        dispatcher.register(command1);
     }
 
     private static CompletableFuture<Suggestions> suggestCommandNumber(CommandContext<CommandSourceStack> context, SuggestionsBuilder builder) {
