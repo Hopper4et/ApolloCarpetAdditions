@@ -1,6 +1,8 @@
 package Hopper4et.apollocarpetadditions.commands;
 
 import io.netty.buffer.ByteBuf;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.network.codec.StreamCodec;
@@ -11,6 +13,9 @@ public final class ClientCommandsServer {
     private ClientCommandsServer() {}
 
     public static void initialize() {
+        FabricLoader loader = FabricLoader.getInstance();
+        if (loader.getEnvironmentType() != EnvType.SERVER || loader.isModLoaded("clientcommands")) return;
+
         PayloadTypeRegistry.serverboundPlay().register(OptInPayload.TYPE, OptInPayload.CODEC);
         ServerPlayNetworking.registerGlobalReceiver(OptInPayload.TYPE, (_, _) -> {});
     }
