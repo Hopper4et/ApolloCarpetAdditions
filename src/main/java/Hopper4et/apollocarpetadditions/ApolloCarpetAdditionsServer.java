@@ -3,7 +3,6 @@ package Hopper4et.apollocarpetadditions;
 import Hopper4et.apollocarpetadditions.commands.MacroRunner;
 import Hopper4et.apollocarpetadditions.commands.ClientCommandsServer;
 import Hopper4et.apollocarpetadditions.commands.macro.MacroCommand;
-import Hopper4et.apollocarpetadditions.rules.enderPearlNotLoadChunksFix.EnderPearlNotLoadChunksFix;
 import Hopper4et.apollocarpetadditions.utils.TickTaskManager;
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
@@ -52,7 +51,6 @@ public class ApolloCarpetAdditionsServer implements CarpetExtension, ModInitiali
     public void onTick(MinecraftServer server) {
         TickTaskManager.tick();
         MacroRunner.tick(server);
-        EnderPearlNotLoadChunksFix.tick();
     }
 
     @Override

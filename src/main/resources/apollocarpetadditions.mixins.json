@@ -5,7 +5,6 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "CarpetPlayerCommandMixin",
-    "EnderPearlEntityMixin",
     "EndGatewayBlockEntityAccessor",
     "EndGatewayBlockEntityInvoker",
     "EndGatewayBlockMixin",
@@ -15,9 +14,9 @@
     "NeighborUpdaterMixin",
     "NetherPortalBlockInvoker",
     "PlayerEntityMixin",
+    "ServerGamePacketListenerImplMixin",
     "ServerPlayerEntityMixin",
-    "ServerWorldMixin",
-    "ThrownEntityMixin"
+    "ServerWorldMixin"
   ],
   "injectors": {
     "defaultRequire": 1
