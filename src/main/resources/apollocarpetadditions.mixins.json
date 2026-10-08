@@ -5,18 +5,17 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "CarpetPlayerCommandMixin",
-    "EndGatewayBlockEntityAccessor",
-    "EndGatewayBlockEntityInvoker",
+    "ChunkHolderAccessor",
+    "ChunkMapAccessor",
+    "ChunkMapMixin",
+    "DistanceManagerMixin",
     "EndGatewayBlockMixin",
-    "EntityMixin",
     "EntitySpawnS2CPacketMixin",
-    "ItemMixin",
     "NeighborUpdaterMixin",
-    "NetherPortalBlockInvoker",
     "PlayerEntityMixin",
     "ServerGamePacketListenerImplMixin",
-    "ServerPlayerEntityMixin",
-    "ServerWorldMixin"
+    "ServerWorldMixin",
+    "TicketTypeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

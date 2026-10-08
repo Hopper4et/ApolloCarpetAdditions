@@ -25,6 +25,8 @@ import java.util.Map;
 
 public class ApolloCarpetAdditionsServer implements CarpetExtension, ModInitializer {
 
+    public static final String MOD_ID = "ApolloCarpetAdditions";
+
     @Override
     public void onInitialize() {
         ClientCommandsServer.initialize();

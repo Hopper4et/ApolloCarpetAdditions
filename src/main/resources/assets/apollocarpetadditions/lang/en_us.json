@@ -13,5 +13,10 @@
   "carpet.rule.playerCommandNonOperatorSpawnInGamemode.desc": "Specifies in which gamemodes non-operators can spawn players with /player command.",
   "carpet.rule.allowEditOtherPlayersMacros.desc": "Determines what permission level allows editing other players' macros via /macro command.",
 
-  "carpet.rule.commandMacro.desc": "Allows to create and execute a sequence of commands with a delay."
+  "carpet.rule.commandMacro.desc": "Allows to create and execute a sequence of commands with a delay.",
+
+  "carpet.rule.fakePlayerChunkLoadingPriority.desc": "Chunks around Carpet fake players load before real players' chunks.",
+  "carpet.rule.fakePlayerChunkLoadingPriority.extra.0": "Bots get their own loading ticket throttler (4 chunks at a time per dimension, like vanilla), not shared with real players,",
+  "carpet.rule.fakePlayerChunkLoadingPriority.extra.1": "and their worldgen and light tasks run ahead of real players', nearest to the bot first.",
+  "carpet.rule.fakePlayerChunkLoadingPriority.extra.2": "Which chunks are loaded and at what level stays the same as in vanilla."
 }

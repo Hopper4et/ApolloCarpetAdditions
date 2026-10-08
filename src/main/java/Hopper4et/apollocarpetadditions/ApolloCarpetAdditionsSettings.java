@@ -1,6 +1,5 @@
 package Hopper4et.apollocarpetadditions;
 
-import carpet.CarpetServer;
 import carpet.api.settings.Rule;
 
 import static carpet.api.settings.RuleCategory.*;
@@ -13,11 +12,6 @@ public class ApolloCarpetAdditionsSettings {
         NONE, SURVIVAL, SPECTATOR, SURVIVAL_SPECTATOR, ALL
     }
 
-    //portals
-
-    @Rule(categories = { MOD, SURVIVAL })
-    public static boolean endGatewaysLoadChunks = true;
-
     //bug fixes
 
     @Rule(categories = { MOD, BUGFIX })
@@ -29,13 +23,16 @@ public class ApolloCarpetAdditionsSettings {
     @Rule(categories = { MOD, OPTIMIZATION })
     public static boolean blockUpdateSuppressionLagFix = false;
 
+    @Rule(categories = { MOD, BUGFIX, EXPERIMENTAL })
+    public static boolean fakePlayerChunkLoadingPriority = false;
+
     //other rules
 
     @Rule(categories = { MOD, SURVIVAL })
     public static boolean instamineDeepslateWithNetheritePickaxe = false;
 
     @Rule(categories = { MOD, SURVIVAL })
-    public static float playerBucketInteractionRange = -1;
+    public static boolean endGatewaysLoadChunks = true;
 
     //command rules
 

@@ -15,8 +15,8 @@ public class PlayerEntityMixin {
             method = "getDestroySpeed",
             at = @At("RETURN"), cancellable = true
     )
-    private void getBlockBreakingSpeed(BlockState block, CallbackInfoReturnable<Float> cir) {
-        if (ApolloCarpetAdditionsSettings.instamineDeepslateWithNetheritePickaxe && block.getBlock().equals(Blocks.DEEPSLATE) && cir.getReturnValue() >= 49.0F) {
+    private void getBlockBreakingSpeed(BlockState state, CallbackInfoReturnable<Float> cir) {
+        if (ApolloCarpetAdditionsSettings.instamineDeepslateWithNetheritePickaxe && state.getBlock().equals(Blocks.DEEPSLATE) && cir.getReturnValue() >= 49.0F) {
             cir.setReturnValue(90.0F);
         }
     }
