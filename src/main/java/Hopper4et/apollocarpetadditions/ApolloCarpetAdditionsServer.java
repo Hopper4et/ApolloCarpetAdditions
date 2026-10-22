@@ -1,9 +1,8 @@
 package Hopper4et.apollocarpetadditions;
 
-import Hopper4et.apollocarpetadditions.commands.MacroRunner;
 import Hopper4et.apollocarpetadditions.commands.ClientCommandsServer;
 import Hopper4et.apollocarpetadditions.commands.macro.MacroCommand;
-import Hopper4et.apollocarpetadditions.utils.TickTaskManager;
+import Hopper4et.apollocarpetadditions.commands.macro.MacroRunner;
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
 import com.google.common.reflect.TypeToken;
@@ -24,8 +23,6 @@ import java.util.Collections;
 import java.util.Map;
 
 public class ApolloCarpetAdditionsServer implements CarpetExtension, ModInitializer {
-
-    public static final String MOD_ID = "ApolloCarpetAdditions";
 
     @Override
     public void onInitialize() {
@@ -51,7 +48,6 @@ public class ApolloCarpetAdditionsServer implements CarpetExtension, ModInitiali
 
     @Override
     public void onTick(MinecraftServer server) {
-        TickTaskManager.tick();
         MacroRunner.tick(server);
     }
 

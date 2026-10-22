@@ -1,9 +1,7 @@
 package Hopper4et.apollocarpetadditions.rules.fakePlayerChunkLoadingPriority;
 
-import Hopper4et.apollocarpetadditions.ApolloCarpetAdditionsServer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.TicketType;
 
 /**
@@ -21,7 +19,7 @@ public final class FakePlayerTicket {
 	public static void register() {
 		TYPE = Registry.register(
 			BuiltInRegistries.TICKET_TYPE,
-			Identifier.fromNamespaceAndPath(ApolloCarpetAdditionsServer.MOD_ID.toLowerCase(), "fake_player"),
+			"apollocarpetadditionsfakeplayer",
 			new TicketType(TicketType.NO_TIMEOUT, TicketType.FLAG_LOADING)
 		);
 	}

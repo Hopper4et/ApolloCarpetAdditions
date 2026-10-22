@@ -16,8 +16,8 @@ public abstract class ChunkMapMixin {
 	public abstract DistanceManager getDistanceManager();
 
 	// Both the worldgen and the light queue take their priority from here
-	@ModifyVariable(method = "onLevelChange", at = @At("HEAD"), argsOnly = true, name = "newLevel")
-	private int apolloCarpetAdditions$fakePlayerQueuePriority(int newLevel, @Local(argsOnly = true, name = "pos") ChunkPos pos) {
+	@ModifyVariable(method = "onLevelChange", at = @At("HEAD"), argsOnly = true)
+	private int apolloCarpetAdditions$fakePlayerQueuePriority(int newLevel, @Local(argsOnly = true) ChunkPos pos) {
 		return ((FakePlayerChunkLoaderHolder) this.getDistanceManager()).apolloCarpetAdditions$getFakePlayerChunkLoader().queuePriority(pos.pack(), newLevel);
 	}
 }
