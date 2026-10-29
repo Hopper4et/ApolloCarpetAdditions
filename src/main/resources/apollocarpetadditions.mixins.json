@@ -14,8 +14,11 @@
     "NeighborUpdaterMixin",
     "PlayerEntityMixin",
     "ServerGamePacketListenerImplMixin",
+    "ServerPlayerGameModeMixin",
     "ServerWorldMixin",
-    "TicketTypeMixin"
+    "TickCommandMixin",
+    "TicketTypeMixin",
+    "TimeArgumentAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

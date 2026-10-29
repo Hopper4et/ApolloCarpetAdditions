@@ -12,11 +12,9 @@ import net.minecraft.server.permissions.PermissionCheck;
 import net.minecraft.server.permissions.PermissionProviderCheck;
 import net.minecraft.server.permissions.Permissions;
 import net.minecraft.world.level.GameType;
-import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -27,7 +25,7 @@ public abstract class CarpetPlayerCommandMixin {
     private static void cantSpawn(CommandContext<CommandSourceStack> context, CallbackInfoReturnable<Boolean> cir) {
         if (
                 cir.getReturnValue() ||
-                ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode == ApolloCarpetAdditionsSettings.GamemodeOptions.NONE ||
+                ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode == ApolloCarpetAdditionsSettings.GameModeOptions.NONE ||
                 context.getSource().permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER)
         ) {
             return;
@@ -42,13 +40,13 @@ public abstract class CarpetPlayerCommandMixin {
         }
 
         if (
-                (ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode != ApolloCarpetAdditionsSettings.GamemodeOptions.SURVIVAL ||
+                (ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode != ApolloCarpetAdditionsSettings.GameModeOptions.SURVIVAL ||
                         gameMode.getId() != 0) &&
-                        (ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode != ApolloCarpetAdditionsSettings.GamemodeOptions.SPECTATOR ||
+                        (ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode != ApolloCarpetAdditionsSettings.GameModeOptions.SPECTATOR ||
                                 gameMode.getId() != 3) &&
-                        (ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode != ApolloCarpetAdditionsSettings.GamemodeOptions.SURVIVAL_SPECTATOR ||
+                        (ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode != ApolloCarpetAdditionsSettings.GameModeOptions.SURVIVAL_SPECTATOR ||
                                 (gameMode.getId() != 0 && gameMode.getId() != 3)) &&
-                        ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode != ApolloCarpetAdditionsSettings.GamemodeOptions.ALL
+                        ApolloCarpetAdditionsSettings.playerCommandNonOperatorSpawnInGamemode != ApolloCarpetAdditionsSettings.GameModeOptions.ALL
         ) {
             Messenger.m(context.getSource(), "r You don't have permission to spawn players in " + gameMode.getName());
             cir.setReturnValue(true);
