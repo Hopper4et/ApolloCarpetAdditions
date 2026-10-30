@@ -32,18 +32,21 @@ public class ApolloCarpetAdditionsSettings {
     @Rule(categories = { MOD, OPTIMIZATION })
     public static boolean blockUpdateSuppressionLagFix = false;
 
-    @Rule(categories = { MOD, BUGFIX, EXPERIMENTAL })
+    @Rule(categories = { MOD, EXPERIMENTAL })
     public static boolean fakePlayerChunkLoadingPriority = false;
+
+    @Rule(categories = { MOD, BUGFIX })
+    public static boolean StopSendPlayerSupportBlocks = false;
 
     //other rules
 
     @Rule(categories = { MOD, SURVIVAL })
     public static boolean instamineDeepslateWithNetheritePickaxe = false;
 
-    @Rule(categories = { MOD, SURVIVAL })
+    @Rule(categories = { MOD, FEATURE })
     public static boolean endGatewaysLoadChunks = true;
 
-    @Rule(categories = { MOD, COMMAND })
+    @Rule(categories = { MOD })
     public static SpectatorGameModeChangeOptions spawnParticlesWhenSpectatorGameModeChanged = SpectatorGameModeChangeOptions.FALSE;
 
     //command rules

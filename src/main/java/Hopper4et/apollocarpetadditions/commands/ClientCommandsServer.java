@@ -12,6 +12,7 @@ import net.minecraft.resources.Identifier;
 public final class ClientCommandsServer {
     private ClientCommandsServer() {}
 
+    //todo
     public static void initialize() {
         FabricLoader loader = FabricLoader.getInstance();
         if (loader.getEnvironmentType() != EnvType.SERVER || loader.isModLoaded("clientcommands")) return;

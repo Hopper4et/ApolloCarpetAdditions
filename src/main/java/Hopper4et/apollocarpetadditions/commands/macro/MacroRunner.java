@@ -81,7 +81,7 @@ public class MacroRunner {
     }
 
     private static String parseCommand(String command, String variables){
-        //player Alex spawn at 10 10 10  $Player=Alex $x=10 $y=10 $z=10
+        //player Alex spawn at 10 10 10 $Player=Alex $x=10 $y=10 $z=10
         //player $Player spawn at $x $y $z
 
         if (variables == null || variables.trim().isEmpty()) {

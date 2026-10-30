@@ -597,8 +597,10 @@ public class MacroCommand {
         return 1;
     }
 
-
     private static int stop(CommandContext<CommandSourceStack> context){
+        CommandSourceStack source = context.getSource();
+        MacroRunner.removeMacro(source);
+        source.sendSuccess(() -> Messenger.c("w Macro stopped"), false);
         return 1;
     }
 }

@@ -1,24 +1,25 @@
 {
-  "carpet.rule.endGatewaysLoadChunks.desc": "End gateways load chunks when an entity teleports through them.",
-  "carpet.rule.spawnParticlesWhenSpectatorGameModeChanged.desc": "TODO",
-  "carpet.rule.spectatorCanUsePortals.desc": "Allows spectators to teleport through Nether portals, End portals and End gateways without affecting the world.",
-
   "carpet.rule.pigCannonUnstuck.desc": "Fixes chunk loading behavior when player is a passenger of a very fast entity.",
-  "carpet.rule.lazyLinkingPre1_21Render.desc": "Returns the behavior of server sending packets with entity coordinates (MC-170907). This fixes lazy linking mob render.",
-  "carpet.rule.portalNoClipFix.desc": "Fixes a bug that teleports player through a portal after touching it in a no-clip (MC-279021).",
-  "carpet.rule.enderPearlNotLoadChunksFix.desc": "Makes sure that the destination chunk and all chunks requiring block checking are loaded before ender pearl with high speed moves. Also not allowing chunk with ender pearl to unload. Uses some code from carpet extra extras enderPearlChunkLoadingFix, so there is no need to turn both of them on.",
+  "carpet.rule.lazyLinkingPre1_21Render.desc": "Returns the behavior of server sending packets with entity coordinates (MC-170907). ",
+  "carpet.rule.lazyLinkingPre1_21Render.extra.0": "This fixes lazy linking mob render with instant entity conveyor.",
   "carpet.rule.blockUpdateSuppressionLagFix.desc": "Removes lag from creating crash reports from block update suppression.",
+  "carpet.rule.fakePlayerChunkLoadingPriority.desc": "Prioritizes loading chunks around Carpet mod fake player over real players.",
+  "carpet.rule.fakePlayerChunkLoadingPriority.extra.0": "!!!WARNING!!! This rule was written entirely by an AI, and the mod author does not know how it works.",
+  "carpet.rule.fakePlayerChunkLoadingPriority.extra.1": "It may cause the server to crash if used with world generation or optimization mods.",
+  "carpet.rule.fakePlayerChunkLoadingPriority.extra.2": "Bots get their own loading ticket throttler (4 chunks at a time per dimension, like vanilla), not shared with real players,",
+  "carpet.rule.fakePlayerChunkLoadingPriority.extra.3": "and their worldgen and light tasks run ahead of real players', nearest to the bot first.",
+  "carpet.rule.fakePlayerChunkLoadingPriority.extra.4": "Which chunks are loaded and at what level stays the same as in vanilla.",
+  "carpet.rule.fakePlayerChunkLoadingPriority.extra.5": "evil ahh rule",
+  "carpet.rule.StopSendPlayerSupportBlocks.desc": "Fixes MC-311727 or 'Player standing on air - force-sending blocks below' message in server console",
+
   "carpet.rule.instamineDeepslateWithNetheritePickaxe.desc": "A player with a block breaking speed of 49 or higher (at least netherite pickaxe with efficiency 5 and haste 2 effect) can instamine deepslate.",
-  "carpet.rule.playerBucketInteractionRange.desc": "Overwrites the maximum distance at which a player can use buckets, boats, and some other items. Set to -1 to disable.",
+  "carpet.rule.endGatewaysLoadChunks.desc": "End gateways load chunks when an entity teleports through them.",
+  "carpet.rule.spawnParticlesWhenSpectatorGameModeChanged.desc": "Spawns a small cloud of white particles when a player switches their game mode to or from spectator mode.",
 
   "carpet.rule.playerCommandNonOperatorSpawnInGamemode.desc": "Specifies in which gamemodes non-operators can spawn players with /player command.",
   "carpet.rule.allowEditOtherPlayersMacros.desc": "Determines what permission level allows editing other players' macros via /macro command.",
-  "carpet.rule.newTimeArgumentValues.desc": "TODO",
+  "carpet.rule.newTimeArgumentValues.desc": "Adds new values for the time argument in commands such as /tick sprint.",
+  "carpet.rule.newTimeArgumentValues.extra.0": "New values are: 1m = 1200 ticks, 1h = 72000 ticks.",
 
-  "carpet.rule.commandMacro.desc": "Allows to create and execute a sequence of commands with a delay.",
-
-  "carpet.rule.fakePlayerChunkLoadingPriority.desc": "Chunks around Carpet fake players load before real players' chunks.",
-  "carpet.rule.fakePlayerChunkLoadingPriority.extra.0": "Bots get their own loading ticket throttler (4 chunks at a time per dimension, like vanilla), not shared with real players,",
-  "carpet.rule.fakePlayerChunkLoadingPriority.extra.1": "and their worldgen and light tasks run ahead of real players', nearest to the bot first.",
-  "carpet.rule.fakePlayerChunkLoadingPriority.extra.2": "Which chunks are loaded and at what level stays the same as in vanilla."
+  "carpet.rule.commandMacro.desc": "Allows to create and execute a sequence of commands with a delay."
 }
